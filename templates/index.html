@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo list</title>
+</head>
+<body>
+	<h1>todo list</h1>
+	<ul>
+		{% for task in tasks %}
+		<li>
+			<form action="/remove/{{ loop.index0 }}" method="POST">
+				<span>{{ task.name }}</span>
+				<input type="submit" value="done" />
+			</form>
+		</li>
+		{% endfor %}
+	</ul>
+	<form action="/new" method="POST">
+		<input type="text" name="name" placeholder="new item"/>
+		<input type="submit" name="submit" value="create" />
+	</form>
+</body>
+</html>
